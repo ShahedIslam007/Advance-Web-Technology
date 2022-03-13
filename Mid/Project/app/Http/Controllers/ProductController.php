@@ -87,7 +87,7 @@ class ProductController extends Controller
 
     public function VendorProducts(Request $request)
     {
-        $product = Product::where('Name', $request->Name)->get();
+        $product = Product::where('Name', $request->CompanyName)->get();
 
         return \view('pages.Vendor.VendorProducts')->with('product',$product);
     }

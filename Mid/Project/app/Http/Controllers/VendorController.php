@@ -145,7 +145,7 @@ class VendorController extends Controller
     {
         $vendor = Vendor::where('id', $request->id)->first();
 
-        return view('pages.Vendor.VendorEdit')->with('vendor', $vendor);;
+        return view('pages.Vendor.VendorEdit')->with('vendor', $vendor);
     }
 
     public function VendorEditSubmitted(Request $request)
