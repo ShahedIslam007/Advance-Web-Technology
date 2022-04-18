@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\VendorLoginController;
 
 
 /*
@@ -51,12 +52,15 @@ Route::get('/VendorProducts/{CompanyName}',[ProductController::class, 'VendorPro
 
 Route::get('/VendorMessages/{Name}',[ConversationController::class,'VendorMessages']);
 Route::post('/VendorMessages',[ConversationController::class,'VendorMessagesSubmitted'])->name('VendorMessages');
-Route::get('/VendorMessage',[ConversationController::class, 'VendorMessage'])->name('VendorMessage');
+Route::get('/VendorMessage',[ConversationController::class, 'VendorMessage'])->name('VendorMessage')->middleware('ValidVendor');
 Route::get('/VendorReply/{Name}',[ConversationController::class,'VendorReply']);
 Route::post('/VendorReply',[ConversationController::class,'VendorReplySubmitted'])->name('VendorReply');
 Route::get('/AdminMessage',[ConversationController::class, 'AdminMessage'])->name('AdminMessage')->middleware('ValidAdmin');;
 Route::get('/AdminReply/{SenderName}',[ConversationController::class,'AdminReply']);
 Route::post('/AdminReply',[ConversationController::class,'AdminReplySubmitted'])->name('AdminReply');
+
+Route::get('/Vendorlogin',[VendorLoginController::class,'Vendorlogin'])->name('Vendorlogin');
+Route::post('/Vendorlogin',[VendorLoginController::class,'VendorloginSubmit'])->name('Vendorlogin');
 
 Route::get('/AdminDashboard',[AdminController::class,'AdminDashboard'])->name('AdminDashboard')->middleware('ValidAdmin');
 

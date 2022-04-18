@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class ValidAdmin
+class ValidVendor
 {
     /**
      * Handle an incoming request.
@@ -20,6 +20,6 @@ class ValidAdmin
         {
             return $next($request);
         }
-        return redirect()->route('Adminlogin');
+        return redirect()->route('Vendorlogin');
     }
 }
